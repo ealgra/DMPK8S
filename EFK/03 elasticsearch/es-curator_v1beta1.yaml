@@ -2,6 +2,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: curator
+  namespace: efk
 spec:
   schedule: 1 0 * * *
   jobTemplate:
@@ -10,7 +11,7 @@ spec:
         spec:
           containers:
           - name: curator
-            image: quay.io/pires/docker-elasticsearch-curator:5.5.1
+            image: quay.io/pires/docker-elasticsearch-curator:5.5.4
             args:
             - --config
             - /etc/config/config.yml

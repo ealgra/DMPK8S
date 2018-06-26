@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: es-pvc
+  namespace: efk
+spec:
+  storageClassName: "es-cifs"
+  accessModes: 
+  - ReadWriteMany 
+  resources:
+    requests:
+      storage: 1Gi

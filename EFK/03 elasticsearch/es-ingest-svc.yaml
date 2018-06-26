@@ -1,14 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: elasticsearch
+  name: elasticsearch-ingest
+  namespace: efk
   labels:
     component: elasticsearch
-    role: client
+    role: ingest
 spec:
   selector:
     component: elasticsearch
-    role: client
+    role: ingest
   ports:
   - name: http
     port: 9200

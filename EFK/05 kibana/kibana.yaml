@@ -2,6 +2,7 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: kibana
+  namespace: efk
   labels:
     component: kibana
 spec:
@@ -16,12 +17,14 @@ spec:
     spec:
       containers:
       - name: kibana
-        image: docker.elastic.co/kibana/kibana-oss:6.2.4
+        image: docker.elastic.co/kibana/kibana-oss:6.3.0
         env:
         - name: CLUSTER_NAME
           value: myesdb
         #- name: SERVER_BASEPATH
         #  value: /api/v1/namespaces/default/services/kibana:http/proxy
+        - name: ELASTICSEARCH_URL
+          value: http://elasticsearch-ingest:9200
         resources:
           limits:
             cpu: 100m
